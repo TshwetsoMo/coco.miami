@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
-
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", serif;
-  
-  /* Brand Colors */
+
   --color-midnight: #09090B;
   --color-charcoal: #141418;
   --color-espresso: #1B1617;
@@ -18,43 +16,131 @@
 }
 
 @layer base {
-  body {
-    @apply bg-midnight text-ivory font-sans antialiased selection:bg-gold selection:text-midnight;
+  html {
+    scroll-behavior: smooth;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight text-ivory;
+
+  body {
+    background-color: var(--color-midnight);
+    color: var(--color-ivory);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-midnight);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+    color: var(--color-ivory);
   }
 
   p {
-    @apply text-stone;
+    color: var(--color-stone);
+  }
+
+  a,
+  button {
+    cursor: pointer;
   }
 }
 
-/* UI Components */
-.glass {
-  @apply bg-charcoal/40 backdrop-blur-md border border-white/5;
+@layer components {
+  .glass {
+    background-color: rgb(20 20 24 / 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgb(255 255 255 / 0.05);
+  }
+
+  .gold-accent {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gold);
+    color: var(--color-midnight);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 1rem 2.5rem;
+    border-radius: 0.125rem;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-bronze);
+    color: var(--color-ivory);
+  }
+
+  .btn-primary:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    background-color: transparent;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 1rem 2.5rem;
+    border-radius: 0.125rem;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-gold);
+    color: var(--color-midnight);
+  }
+
+  .btn-secondary:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #C6A46A, #8E6A3B, #C6A46A);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
 
-.gold-accent {
-  @apply text-gold border-gold;
-}
-
-.btn-primary {
-  @apply bg-gold text-midnight font-bold uppercase tracking-[0.15em] px-10 py-4 rounded-sm transition-all duration-300 hover:bg-bronze hover:text-ivory;
-}
-
-.btn-secondary {
-  @apply border border-gold text-gold font-bold uppercase tracking-[0.15em] px-10 py-4 rounded-sm transition-all duration-300 hover:bg-gold hover:text-midnight;
-}
-
-.text-gold-gradient {
-  @apply bg-gradient-to-br from-gold via-bronze to-gold bg-clip-text text-transparent;
-}
-
-/* Spacing Helpers */
-.section-padding {
-  @apply py-24 md:py-32;
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
 }
 
 /* Custom scrollbar */
@@ -63,18 +149,27 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-midnight;
+  background-color: var(--color-midnight);
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-charcoal rounded-full hover:bg-espresso transition-colors;
+  background-color: var(--color-charcoal);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
 }
 
-/* Motion Utilities */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-espresso);
+}
+
+/* Motion utilities */
 .reveal-on-scroll {
-  @apply opacity-0 translate-y-4 transition-all duration-700 ease-out;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .reveal-on-scroll.active {
-  @apply opacity-100 translate-y-0;
+  opacity: 1;
+  transform: translateY(0);
 }
