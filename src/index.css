@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  
+  /* Brand Colors */
+  --color-midnight: #09090B;
+  --color-charcoal: #141418;
+  --color-espresso: #1B1617;
+  --color-ivory: #F3EFE8;
+  --color-stone: #B8B0A5;
+  --color-gold: #C6A46A;
+  --color-bronze: #8E6A3B;
+  --color-bordeaux: #2A1117;
+}
+
+@layer base {
+  body {
+    @apply bg-midnight text-ivory font-sans antialiased selection:bg-gold selection:text-midnight;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight text-ivory;
+  }
+
+  p {
+    @apply text-stone;
+  }
+}
+
+/* UI Components */
+.glass {
+  @apply bg-charcoal/40 backdrop-blur-md border border-white/5;
+}
+
+.gold-accent {
+  @apply text-gold border-gold;
+}
+
+.btn-primary {
+  @apply bg-gold text-midnight font-bold uppercase tracking-[0.15em] px-10 py-4 rounded-sm transition-all duration-300 hover:bg-bronze hover:text-ivory;
+}
+
+.btn-secondary {
+  @apply border border-gold text-gold font-bold uppercase tracking-[0.15em] px-10 py-4 rounded-sm transition-all duration-300 hover:bg-gold hover:text-midnight;
+}
+
+.text-gold-gradient {
+  @apply bg-gradient-to-br from-gold via-bronze to-gold bg-clip-text text-transparent;
+}
+
+/* Spacing Helpers */
+.section-padding {
+  @apply py-24 md:py-32;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-midnight;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-charcoal rounded-full hover:bg-espresso transition-colors;
+}
+
+/* Motion Utilities */
+.reveal-on-scroll {
+  @apply opacity-0 translate-y-4 transition-all duration-700 ease-out;
+}
+
+.reveal-on-scroll.active {
+  @apply opacity-100 translate-y-0;
+}

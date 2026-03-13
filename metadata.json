@@ -1,0 +1,7 @@
+{
+  "name": "Coco Miami",
+  "description": "A luxury digital experience for Miami's premier nightlife destination. Book reservations, host private events, and explore the Coco Miami atmosphere.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
