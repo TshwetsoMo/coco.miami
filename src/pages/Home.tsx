@@ -15,7 +15,7 @@ import gallery7 from '../assets/GALLERY/image8-asset4.png';
 import gallery8 from '../assets/GALLERY/image8-asset5.png';
 import cocoBackground from '../assets/Coco_background.png';
 import hostingEventImage from '../assets/GALLERY/image8-asset13.png';
-import privateEventImage from '../assets/GALLERY/image8-asset11.png';
+//import privateEventImage from '../assets/GALLERY/image8-asset11.png';
 import gallery9 from '../assets/GALLERY/image1-asset17.png';
 import gallery10 from '../assets/GALLERY/image1-asset18.png';
 import gallery11 from '../assets/GALLERY/image1-asset19.png';
